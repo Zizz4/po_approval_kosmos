@@ -10,7 +10,6 @@
     'depends': ['base','purchase'],
     'data': ['views/purchase_order_form_view.xml',
              'views/res_users_view.xml',
-             'views/res_company_views.xml',
              'report/report_purchase_order.xml'],
     'installable': True,
     'auto_install': False
