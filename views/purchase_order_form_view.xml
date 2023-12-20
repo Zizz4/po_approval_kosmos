@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="purchase_order_form_po_approval_kosmos_inherit" model="ir.ui.view">
+            <field name="name">purchase.order.form.po.approval.kosmos.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <!-- Confirm Order only for Manager -->
+                <xpath expr="//button[@id='draft_confirm']" position="attributes">
+                    <attribute name="groups">purchase.group_purchase_manager</attribute>
+                </xpath>
+
+                <xpath expr="//group[@name='invoice_info']" position="inside">
+                    <field name="approver_id" widget="many2one_avatar_user"
+                           attrs="{'readonly': [('state', 'in', ['purchase', 'done','cancel'])], 'invisible': [('state', '=', 'draft')]}"/>
+                    <field name="signature" readonly="1" widget="image" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

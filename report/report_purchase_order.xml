@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_purchaseorder_document_inherit_po_approval"
+                  inherit_id="purchase.report_purchaseorder_document">
+            <!-- Hapus Kolom Date Req. -->
+            <xpath expr="//th[@name='th_date_req']" position="replace">
+            </xpath>
+            <xpath expr="//tbody/t[@t-as='line']/tr/t[1]/td[3]" position="replace">
+            </xpath>
+
+            <!-- Tambah Sign dan Stample-->
+            <xpath expr="//p[@t-field='o.notes']" position="after">
+                <t t-if="o.approver_id">
+                    <div class="mt-5 pt-5 row justify-content-end">
+                        <div class="col-4">
+                            <h6>Hormat kami,</h6>
+                            <h6>PT. Kosmos Wavelength Technology</h6>
+                        </div>
+                    </div>
+                    <div class="mt-1 pt-1 mr-2 row justify-content-end">
+                        <div class="col-4"
+                             t-attf-style="background-image: url('/po_approval_kosmos/static/img/stample-kosmos.png'); background-size: 100px 100px; background-repeat: no-repeat;">
+                            <img t-att-src="image_data_uri(o.signature)"
+                                 style="max-height: 3cm; max-width: 10cm"/>
+                        </div>
+                    </div>
+                    <div class="mt-1 pt-1 row justify-content-end">
+                        <div class="col-4">
+                            <h6>( <span t-field="o.approver_id.name"/> )</h6>
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>
