@@ -21,13 +21,18 @@
                     <div class="mt-1 pt-1 mr-2 row justify-content-end">
                         <div class="col-4"
                              t-attf-style="background-image: url('/po_approval_kosmos/static/img/stample-kosmos.png'); background-size: 100px 100px; background-repeat: no-repeat;">
-                            <img t-att-src="image_data_uri(o.signature)"
-                                 style="max-height: 3cm; max-width: 10cm"/>
+                            <t t-if="o.signature">
+                                <img t-att-src="image_data_uri(o.signature)"
+                                     style="max-height: 3cm; max-width: 10cm"/>
+                            </t>
                         </div>
                     </div>
                     <div class="mt-1 pt-1 row justify-content-end">
                         <div class="col-4">
-                            <h6>( <span t-field="o.approver_id.name"/> )</h6>
+                            <h6>(
+                                <span t-field="o.approver_id.name"/>
+                                )
+                            </h6>
                         </div>
                     </div>
                 </t>
