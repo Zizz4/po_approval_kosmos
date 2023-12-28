@@ -16,7 +16,7 @@
                 <xpath expr="//group[@name='invoice_info']" position="inside">
                     <field name="approver_id" widget="many2one_avatar_user"
                            attrs="{'readonly': [('state', 'in', ['purchase', 'done','cancel'])]}"/>
-                    <field name="signature" widget="image"/>
+                    <field name="signature" widget="image" attrs="{'readonly': [('state', 'in', ['purchase', 'done','cancel'])]}"/>
                 </xpath>
             </field>
         </record>
